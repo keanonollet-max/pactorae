@@ -1,0 +1,390 @@
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Primary Colors */
+    --color-primary: #1E3A5F; /* Deep professional navy */
+    --color-primary-foreground: #FFFFFF; /* white */
+    
+    --color-secondary: #2D5A87; /* Lighter navy */
+    --color-secondary-foreground: #FFFFFF; /* white */
+    
+    --color-accent: #D4761A; /* Warm copper */
+    --color-accent-foreground: #FFFFFF; /* white */
+    
+    /* Background Colors */
+    --color-background: #FAFBFC; /* Soft off-white */
+    --color-foreground: #1A1D21; /* Rich charcoal */
+    
+    /* Surface Colors */
+    --color-card: #FFFFFF; /* Pure white */
+    --color-card-foreground: #1A1D21; /* Rich charcoal */
+    
+    --color-popover: #FFFFFF; /* white */
+    --color-popover-foreground: #1A1D21; /* Rich charcoal */
+    
+    /* Muted Colors */
+    --color-muted: #F1F5F9; /* slate-100 */
+    --color-muted-foreground: #64748B; /* slate-500 */
+    
+    /* Border & Input */
+    --color-border: rgba(100, 116, 139, 0.2); /* slate-500 with opacity */
+    --color-input: rgba(100, 116, 139, 0.15); /* slate-500 with opacity */
+    --color-ring: #D4761A; /* Warm copper - accent */
+    
+    /* State Colors */
+    --color-success: #059669; /* emerald-600 */
+    --color-success-foreground: #FFFFFF; /* white */
+    
+    --color-warning: #D97706; /* amber-600 */
+    --color-warning-foreground: #FFFFFF; /* white */
+    
+    --color-error: #DC2626; /* red-600 */
+    --color-error-foreground: #FFFFFF; /* white */
+    
+    --color-destructive: #DC2626; /* red-600 */
+    --color-destructive-foreground: #FFFFFF; /* white */
+    
+    /* Radius */
+    --radius-sm: 6px;
+    --radius-md: 12px;
+    --radius-lg: 18px;
+    --radius-xl: 24px;
+  }
+
+  .dark {
+    /* Primary Colors - Dark Mode */
+    --color-primary: #3B5F8F; /* Lighter navy for dark */
+    --color-primary-foreground: #FFFFFF; /* white */
+    
+    --color-secondary: #4A7AB8; /* Lighter secondary navy */
+    --color-secondary-foreground: #FFFFFF; /* white */
+    
+    --color-accent: #E5934A; /* Adjusted copper for dark */
+    --color-accent-foreground: #FFFFFF; /* white */
+    
+    /* Background Colors - Dark Mode */
+    --color-background: #0F1419; /* gray-950 */
+    --color-foreground: #EBEBEB; /* gray-100 - 92% white */
+    
+    /* Surface Colors - Dark Mode */
+    --color-card: #1A1D21; /* gray-900 */
+    --color-card-foreground: #EBEBEB; /* gray-100 */
+    
+    --color-popover: #2D3748; /* gray-800 */
+    --color-popover-foreground: #EBEBEB; /* gray-100 */
+    
+    /* Muted Colors - Dark Mode */
+    --color-muted: #2D3748; /* gray-800 */
+    --color-muted-foreground: #94A3B8; /* slate-400 */
+    
+    /* Border & Input - Dark Mode */
+    --color-border: rgba(148, 163, 184, 0.2); /* slate-400 with opacity */
+    --color-input: rgba(148, 163, 184, 0.15); /* slate-400 with opacity */
+    --color-ring: #E5934A; /* Adjusted copper */
+    
+    /* State Colors - Dark Mode */
+    --color-success: #10B981; /* emerald-500 */
+    --color-success-foreground: #FFFFFF; /* white */
+    
+    --color-warning: #F59E0B; /* amber-500 */
+    --color-warning-foreground: #FFFFFF; /* white */
+    
+    --color-error: #EF4444; /* red-500 */
+    --color-error-foreground: #FFFFFF; /* white */
+    
+    --color-destructive: #EF4444; /* red-500 */
+    --color-destructive-foreground: #FFFFFF; /* white */
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Crimson Text', serif;
+    font-weight: 600;
+  }
+
+  h1 {
+    font-size: 2.25rem;
+    line-height: 1.2;
+  }
+
+  h2 {
+    font-size: 1.875rem;
+    line-height: 1.25;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+    line-height: 1.3;
+  }
+
+  h4 {
+    font-size: 1.25rem;
+    line-height: 1.4;
+  }
+
+  h5 {
+    font-size: 1.125rem;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 640px) {
+    body {
+      font-size: 15px;
+    }
+  }
+}
+
+@layer components {
+  /* Header Component Styles */
+  .header-container {
+    @apply fixed top-0 left-0 right-0 z-[100] bg-card shadow-md;
+    height: 60px;
+  }
+
+  .header-content {
+    @apply flex items-center justify-between h-full px-6;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  .header-logo {
+    @apply flex items-center gap-3;
+  }
+
+  .header-logo-icon {
+    @apply w-10 h-10 rounded-lg flex items-center justify-center;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  }
+
+  .header-logo-text {
+    @apply text-xl font-semibold text-foreground;
+    font-family: 'Crimson Text', serif;
+  }
+
+  .header-actions {
+    @apply flex items-center gap-4;
+  }
+
+  /* Progress Indicator Styles */
+  .progress-container {
+    @apply w-full py-8;
+  }
+
+  .progress-steps {
+    @apply flex items-center justify-center gap-4;
+  }
+
+  .progress-step {
+    @apply flex items-center gap-3;
+  }
+
+  .progress-step-circle {
+    @apply w-10 h-10 rounded-full flex items-center justify-center font-semibold transition-all duration-250;
+    font-family: 'Nunito Sans', sans-serif;
+  }
+
+  .progress-step-circle.active {
+    @apply bg-primary text-primary-foreground shadow-md;
+  }
+
+  .progress-step-circle.completed {
+    @apply bg-success text-success-foreground;
+  }
+
+  .progress-step-circle.pending {
+    @apply bg-muted text-muted-foreground;
+  }
+
+  .progress-step-label {
+    @apply text-sm font-medium;
+    font-family: 'Nunito Sans', sans-serif;
+  }
+
+  .progress-step-label.active {
+    @apply text-primary;
+  }
+
+  .progress-step-label.completed {
+    @apply text-success;
+  }
+
+  .progress-step-label.pending {
+    @apply text-muted-foreground;
+  }
+
+  .progress-connector {
+    @apply w-12 h-0.5 bg-muted transition-all duration-250;
+  }
+
+  .progress-connector.completed {
+    @apply bg-success;
+  }
+
+  /* Action Panel Styles */
+  .action-panel {
+    @apply mt-8 p-8 bg-card rounded-xl border border-border shadow-md;
+  }
+
+  .action-panel-title {
+    @apply text-lg font-semibold mb-4 text-foreground;
+    font-family: 'Crimson Text', serif;
+  }
+
+  .action-panel-buttons {
+    @apply flex flex-wrap gap-4;
+  }
+
+  @media (max-width: 640px) {
+    .header-content {
+      @apply px-4;
+    }
+
+    .header-logo-text {
+      @apply text-lg;
+    }
+
+    .progress-steps {
+      @apply flex-col gap-3;
+    }
+
+    .progress-connector {
+      @apply w-0.5 h-8;
+    }
+
+    .action-panel {
+      @apply p-6;
+    }
+
+    .action-panel-buttons {
+      @apply flex-col;
+    }
+  }
+
+  /* Contract Content Styles */
+  .contract-content {
+    @apply mt-8 p-8 bg-card rounded-xl border border-border;
+    font-family: 'JetBrains Mono', monospace;
+    max-height: 600px;
+    overflow-y: auto;
+  }
+
+  .contract-content pre {
+    @apply whitespace-pre-wrap break-words text-sm;
+  }
+
+  /* Loading Animation */
+  .loading-pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+  }
+
+  /* Success Animation */
+  .success-bounce {
+    animation: bounce 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  @keyframes bounce {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+}
+
+  /* Focus Styles */
+  .focus-ring  {
+    @apply outline-none ring-ring ring-offset-2 ring-offset-background;
+  }
+
+  /* Card Styles */
+  .card {
+    @apply bg-card text-card-foreground rounded-xl border border-border shadow-sm p-8;
+  }
+
+  /* Skeleton Loading */
+  .skeleton {
+    @apply bg-muted rounded-md animate-pulse;
+  }
+
+  /* Utility Classes */
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .max-w-prose {
+    max-width: 70ch;
+  }
+}
+
+@layer utilities {
+  .transition-smooth {
+    transition: all 250ms ease-out;
+  }
+
+  .shadow-elevation-1 {
+    box-shadow: 0 2px 4px rgba(30, 58, 95, 0.08);
+  }
+
+  .shadow-elevation-2 {
+    box-shadow: 0 4px 8px rgba(30, 58, 95, 0.1);
+  }
+
+  .shadow-elevation-3 {
+    box-shadow: 0 8px 16px rgba(30, 58, 95, 0.12);
+  }
+
+  .shadow-elevation-4 {
+    box-shadow: 0 12px 24px rgba(30, 58, 95, 0.14);
+  }
+
+  .shadow-elevation-5 {
+    box-shadow: 0 20px 40px -8px rgba(30, 58, 95, 0.16);
+  }
+
+  .dark .shadow-elevation-1 {
+    box-shadow: 0 2px 4px rgba(229, 147, 74, 0.1);
+  }
+
+  .dark .shadow-elevation-2 {
+    box-shadow: 0 4px 8px rgba(229, 147, 74, 0.12);
+  }
+
+  .dark .shadow-elevation-3 {
+    box-shadow: 0 8px 16px rgba(229, 147, 74, 0.14);
+  }
+
+  .dark .shadow-elevation-4 {
+    box-shadow: 0 12px 24px rgba(229, 147, 74, 0.16);
+  }
+
+  .dark .shadow-elevation-5 {
+    box-shadow: 0 20px 40px -8px rgba(229, 147, 74, 0.18);
+  }
+}
